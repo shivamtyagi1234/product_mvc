@@ -18,7 +18,7 @@
 		<tx:annotation-driven/>
 	<!-- Step 3: Add support for component scanning --> <!-- It must be the same package name in which the controller created -->
 	<!-- <context:component-scan base-package="com.luv2code.springdemo" /> -->
-	<context:component-scan base-package="product.controller" />
+	<context:component-scan base-package="product" />
 	<!-- Step 4: Add support for conversion, formatting and validation support -->
 	<!-- <mvc:annotation-driven/> -->
 
