@@ -14,4 +14,11 @@ public class ProductService {
 	public void saveProduct(Product product) {
 		this.productDao.createProduct(product);
 	}
+	
+	public Product getProductById(int id) {
+		Product p1=this.productDao.getProduct(id);
+	//System.out.println("Product by id: "+p1);
+		return p1;
+	}
+
 }

@@ -54,6 +54,10 @@ public class Product {
 		this.description = description;
 		this.price = price;
 	}
+	public Product() {
+		super();
+	}
+	
 	
 }
 
