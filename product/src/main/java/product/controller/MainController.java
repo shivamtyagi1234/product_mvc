@@ -66,9 +66,9 @@ public class MainController {
 		System.out.println(p);
 		return "registration";
 	}
-	@RequestMapping("/fetch/{pid}")
-	public Product fetchProduct(@PathVariable int pid) {
-		Product p1=this.productDao.getProduct(pid);
+	@RequestMapping("/fetch/{productId}")
+	public Product fetchProduct(@PathVariable("productId") int pid) {
+		Product p1=productDao.getProduct(pid);
 		System.out.println("Product by id: "+pid+" :: "+p1);
 		return p1;
 	}
@@ -99,7 +99,31 @@ public class MainController {
 		System.out.println("request.getContentType: "+request.getContextPath());
 		redirectView.setUrl(request.getContextPath()+"/load-product");
 		return redirectView;
+	}
+	
+	//Update Product Handler
+	@RequestMapping("/update/{productId}")
+	public String update(@PathVariable("productId") int productId, Model m) {
+		Product product=this.productDao.getProduct(productId);
 		
+		/*
+		 * System.out.println("Product Name: "+product.getName());
+		 * System.out.println("Product Description: "+product.getDescription());
+		 * System.out.println("Product Price: "+product.getPrice());
+		 */
+		 
+		System.out.println(product);
+		m.addAttribute("product", product);
+		
+		return "updateproduct";
+	}
+	
+	@RequestMapping(value="/update-product",method=RequestMethod.POST)
+	public RedirectView updateIproduct(@ModelAttribute Product p,HttpServletRequest request) {
+		this.productDao.createProduct(p);
+		RedirectView redirectView=new RedirectView();
+		redirectView.setUrl(request.getContextPath()+"/load-product");
+		return redirectView;
 	}
 	
 }

@@ -43,7 +43,11 @@
       <td>${p.name }</td>
       <td>${p.description }</td>
       <td class="font-weight-bold">&#8377; ${p.price }</td>
-      <td><a href="delete/${p.id }"><i class="fas fa-trash text-danger"></i></a></td>
+      <td>
+      <a href="delete/${p.id }"><i class="fas fa-trash text-danger"></i></a>
+      <a href="update/${p.id }"><i class="fa-solid fa-pen-to-square ml-3"></i></a>
+      </td>
+ 
     </tr>
   </c:forEach>  
    
