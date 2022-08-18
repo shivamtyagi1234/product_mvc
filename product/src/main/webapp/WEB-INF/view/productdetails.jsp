@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
   <%@ page import="java.util.ArrayList" %>
+  <jsp:include page="base.jsp" />
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,6 +12,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
+
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <title>Product App</title>
   </head>
   <body>
@@ -34,15 +37,22 @@
     </tr>
   </thead>
   <tbody>
-
+  <c:forEach items="${product }" var="p">
+    <tr class="text-left">
+      <th scope="row">${p.id }</th>
+      <td>${p.name }</td>
+      <td>${p.description }</td>
+      <td class="font-weight-bold">&#8377; ${p.price }</td>
+      <td><a href="delete/${p.id }"><i class="fas fa-trash text-danger"></i></a></td>
+    </tr>
+  </c:forEach>  
    
    
   </tbody>
 </table>
 </div>
 <div class="container text-center">
-<a href="./add-product" class="btn btn-outline-success">Add Product</a>
-<a href="./load-product" class="btn btn-outline-success">Load Products</a>
+<a href="${pageContext.request.contextPath }/add-product" class="btn btn-outline-success">Add Product</a>
 </div>
 
     
